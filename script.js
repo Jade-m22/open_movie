@@ -72,7 +72,8 @@ function createMovieCard(film) {
     block.classList.add('col-md-4');
   }
 
-  block.innerHTML = 
+  // Construction du HTML avec template literal correctement fermé
+  const cardHTML = `
     <div class="card h-100">
       <img
         class="card-img-top loading"
@@ -87,7 +88,10 @@ function createMovieCard(film) {
         <button class="btn btn-secondary mt-auto read-more" data-id="${film.imdbID}">Read More</button>
       </div>
     </div>
-  ;
+  `;
+
+  block.innerHTML = cardHTML;
+
   container.appendChild(block);
 
   observer.observe(block);
@@ -95,6 +99,7 @@ function createMovieCard(film) {
   const img = block.querySelector('img');
   imgObserver.observe(img);
 }
+
 
 
 form.addEventListener('submit', async e => {
